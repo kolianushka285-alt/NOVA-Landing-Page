@@ -1512,3 +1512,455 @@ section {
     gap: 8px;
   }
 }
+/* =========================================================
+   FINAL NOVA INTERACTIONS
+========================================================= */
+
+/* ---------- HOW IT WORKS ---------- */
+
+.how-heading {
+  animation: novaFadeUp 0.8s ease both;
+}
+
+.step-card {
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  animation: novaStepReveal 0.8s ease forwards;
+
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.step-card-1 {
+  animation-delay: 0.1s;
+}
+
+.step-card-2 {
+  animation-delay: 0.25s;
+}
+
+.step-card-3 {
+  animation-delay: 0.4s;
+}
+
+.step-card:hover {
+  transform: translateY(-10px);
+  border-color: #58a6ff;
+  box-shadow: 0 20px 50px rgba(88, 166, 255, 0.14);
+}
+
+.step-icon {
+  display: inline-flex;
+  transition:
+    transform 0.35s ease,
+    text-shadow 0.35s ease;
+}
+
+.step-card:hover .step-icon {
+  transform: rotate(10deg) scale(1.15);
+  text-shadow: 0 0 18px rgba(88, 166, 255, 0.65);
+}
+
+.step-glow {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  top: -70px;
+  right: -70px;
+  border-radius: 50%;
+  background: rgba(88, 166, 255, 0.07);
+  filter: blur(22px);
+  pointer-events: none;
+  transition:
+    width 0.4s ease,
+    height 0.4s ease,
+    background 0.4s ease;
+}
+
+.step-card:hover .step-glow {
+  width: 200px;
+  height: 200px;
+  background: rgba(88, 166, 255, 0.15);
+}
+
+.step-arrow {
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease;
+}
+
+.step-card:hover .step-arrow {
+  transform: translateX(8px);
+  color: #58a6ff;
+}
+
+.step-line {
+  position: absolute;
+  left: 28px;
+  right: 28px;
+  bottom: 12px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(88, 166, 255, 0.55),
+    transparent
+  );
+  transform: scaleX(0);
+  transition: transform 0.5s ease;
+}
+
+.step-card:hover .step-line {
+  transform: scaleX(1);
+}
+
+
+/* ---------- PRODUCT ---------- */
+
+.product-section {
+  overflow: hidden;
+}
+
+.product-window {
+  animation: novaProductIn 0.9s ease 0.1s both;
+}
+
+.product-point {
+  transition: transform 0.3s ease;
+}
+
+.product-point:hover {
+  transform: translateX(6px);
+}
+
+.point-icon {
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease;
+}
+
+.product-point:hover .point-icon {
+  transform: scale(1.1) rotate(6deg);
+  background: rgba(88, 166, 255, 0.16);
+}
+
+
+/* ---------- CHART ANIMATION ---------- */
+
+.chart-bars i {
+  transform-origin: bottom;
+  animation: novaBarRise 0.8s ease both;
+}
+
+.chart-bars i:nth-child(1) { animation-delay: 0.1s; }
+.chart-bars i:nth-child(2) { animation-delay: 0.2s; }
+.chart-bars i:nth-child(3) { animation-delay: 0.3s; }
+.chart-bars i:nth-child(4) { animation-delay: 0.4s; }
+.chart-bars i:nth-child(5) { animation-delay: 0.5s; }
+.chart-bars i:nth-child(6) { animation-delay: 0.6s; }
+.chart-bars i:nth-child(7) { animation-delay: 0.7s; }
+
+
+/* ---------- FAQ ---------- */
+
+.faq-item {
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.faq-item:hover,
+.faq-item.active {
+  border-color: rgba(88, 166, 255, 0.5);
+}
+
+.faq-item button b {
+  transition: transform 0.25s ease;
+}
+
+
+/* ---------- NAVIGATION ---------- */
+
+.nav-links a {
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.nav-links a:hover {
+  transform: translateY(-1px);
+}
+
+
+/* ---------- ANIMATIONS ---------- */
+
+@keyframes novaFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes novaStepReveal {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes novaProductIn {
+  from {
+    opacity: 0;
+    transform: translateX(35px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes novaBarRise {
+  from {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+
+  to {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
+
+/* ---------- ACCESSIBILITY ---------- */
+
+.nav-toggle:focus-visible,
+.nav-links a:focus-visible,
+.nav-button:focus-visible,
+.faq-item button:focus-visible {
+  outline: 2px solid #58a6ff;
+  outline-offset: 3px;
+}
+
+
+/* ---------- REDUCED MOTION ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .how-heading,
+  .step-card,
+  .product-window,
+  .chart-bars i {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .step-card,
+  .step-icon,
+  .step-glow,
+  .step-arrow,
+  .step-line,
+  .product-point {
+    transition: none;
+  }
+}
+/* =========================================================
+   FAQ SECTION
+========================================================= */
+
+.faq-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.faq-heading {
+  animation: faqHeadingIn 0.8s ease both;
+}
+
+.faq-list {
+  max-width: 900px;
+  margin: 60px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.faq-item {
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.03);
+  overflow: hidden;
+
+  transition:
+    border-color 0.3s ease,
+    background 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.faq-item:hover {
+  transform: translateY(-2px);
+  border-color: rgba(88, 166, 255, 0.25);
+}
+
+.faq-item.active {
+  border-color: rgba(88, 166, 255, 0.5);
+  background: rgba(88, 166, 255, 0.045);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.12);
+}
+
+.faq-question {
+  width: 100%;
+  padding: 24px 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  border: none;
+  background: transparent;
+  color: inherit;
+
+  text-align: left;
+  cursor: pointer;
+}
+
+.faq-question span {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.faq-icon {
+  min-width: 34px;
+  height: 34px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+
+  font-size: 22px;
+  font-weight: 400;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.faq-icon.rotate {
+  transform: rotate(180deg);
+  background: rgba(88, 166, 255, 0.12);
+  border-color: rgba(88, 166, 255, 0.4);
+}
+
+.faq-answer {
+  display: grid;
+  grid-template-rows: 0fr;
+
+  transition:
+    grid-template-rows 0.35s ease,
+    opacity 0.35s ease;
+
+  opacity: 0;
+}
+
+.faq-answer.show {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.faq-answer p {
+  min-height: 0;
+  overflow: hidden;
+
+  margin: 0;
+  padding: 0 28px;
+
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 15px;
+  line-height: 1.8;
+
+  transition: padding 0.35s ease;
+}
+
+.faq-answer.show p {
+  padding: 0 28px 25px;
+}
+
+.faq-question:focus-visible {
+  outline: 2px solid #58a6ff;
+  outline-offset: -2px;
+  border-radius: 16px;
+}
+
+
+/* Animation */
+
+@keyframes faqHeadingIn {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* Mobile */
+
+@media (max-width: 768px) {
+  .faq-list {
+    margin-top: 40px;
+  }
+
+  .faq-question {
+    padding: 20px;
+  }
+
+  .faq-question span {
+    font-size: 16px;
+  }
+
+  .faq-answer p {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .faq-answer.show p {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faq-heading,
+  .faq-item,
+  .faq-answer,
+  .faq-icon {
+    animation: none;
+    transition: none;
+  }
+}
